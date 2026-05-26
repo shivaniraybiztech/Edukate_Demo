@@ -1,6 +1,21 @@
 ﻿@using Edukate.Components.Widgets.HeroWidget
+@using Kentico.Content.Web.Mvc
+@using Kentico.Web.Mvc
+@inject IWebPageDataContextRetriever contextRetriever
 
 @model HeroWidgetViewModel
+
+@{
+    var currentPath = Context.Request.Path.Value?.Trim('/') ?? "";
+    var pathSegments = string.IsNullOrEmpty(currentPath) 
+        ? new string[0] 
+        : currentPath.Split('/', StringSplitOptions.RemoveEmptyEntries);
+
+    // Get the last segment as the page name
+    var pageName = pathSegments.Length > 0 
+        ? System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pathSegments[^1].Replace("-", " "))
+        : "Home";
+}
 
 <section>
     <!-- Header Start -->
@@ -40,10 +55,15 @@
 
 
     <!-- Hero Start -->
-    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom"
-         style="margin-bottom: 90px; min-height: 500px; overflow:hidden;">
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" 
+   style="
+        margin-bottom: 90px;
+        min-height: 500px;
+        background:
+        linear-gradient(rgba(40,120,235,0.7), rgba(40,120,235,0.7)),
+        url(' @Model.ImageUrl') center center / cover no-repeat;">
 
-        <!-- Background Image -->
+       @*  <!-- Background Image -->
         @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
         {
             <img src="@Model.ImageUrl"
@@ -52,14 +72,25 @@
                  alt="Hero Image" />
         }
 
-        <!-- Overlay -->
         <div class="position-absolute w-100 h-100"
              style="top:0; left:0; background: rgba(0, 68, 204, 0.6); z-index:2;">
-        </div>
+        </div> *@
 
         <!-- Content -->
-        <div class="container text-center py-5 position-relative"
-             style="z-index:3;">
+        <div class="container text-center py-5 position-relative" style="z-index:3;">
+
+            <!-- Breadcrumb -->
+            <div class="d-inline-flex text-white mb-5">
+                <p class="m-0 text-uppercase">
+                    <a class="text-white" href="/">Home</a>
+                </p>
+
+                @if (pathSegments.Length > 0)
+                {
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">@pageName</p>
+                }
+            </div>
 
             <!-- Small Title -->
             <h5 class="text-white text-uppercase mb-3">
@@ -112,7 +143,7 @@
 
         </div>
 
-        <!-- Wave Shape Bottom -->
+      @*   <!-- Wave Shape Bottom -->
         <div class="position-absolute w-100"
              style="bottom: 0; z-index:3;">
 
@@ -127,7 +158,7 @@
 
             </svg>
 
-        </div>
+        </div> *@
 
     </div>
     <!-- Hero End -->

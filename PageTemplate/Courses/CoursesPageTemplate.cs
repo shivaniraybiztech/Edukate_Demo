@@ -5,8 +5,7 @@ using Kentico.PageBuilder.Web.Mvc.PageTemplates;
     identifier: "Edukate.Courses",
     name: "Courses Listing Page Template",
     customViewName: "~/PageTemplate/Courses/_CoursesPageTemplate.cshtml",
-        ContentTypeNames = [Course.CONTENT_TYPE_NAME],
-
+    ContentTypeNames = [CourseItem.CONTENT_TYPE_NAME],
     Description = "Courses listing page template for Edukate displaying course listings with pagination",
     IconClass = "xp-list"
 )]

@@ -1,0 +1,116 @@
+@using Edukate
+@using Kentico.Content.Web.Mvc
+@using Kentico.Content.Web.Mvc.PageBuilder
+@using Kentico.PageBuilder.Web.Mvc
+@using Kentico.Web.Mvc
+@addTagHelper *, Kentico.Content.Web.Mvc
+@inject IContentRetriever contentRetriever
+
+@{
+    Layout = "_Layout";
+
+    // Retrieve the current instructor detail page
+    var parameters = new RetrieveCurrentPageParameters
+    {
+        LinkedItemsMaxLevel = 1
+    };
+
+    var instructor = await contentRetriever.RetrieveCurrentPage<InstructorItem>(parameters);
+    string imageUrl = null;
+
+    // Get the image URL from the Photo collection
+    if (instructor?.Photo != null)
+    {
+        var photoImage = instructor.Photo.FirstOrDefault();
+        if (photoImage?.ImageFile != null)
+        {
+            imageUrl = photoImage.ImageFile.Url;
+        }
+    }
+
+    ViewData["Title"] = instructor?.Name ?? "Instructor";
+}
+
+<!-- Header Start -->
+<div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 90px;">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-1">@instructor?.Name</h1>
+        <div class="d-inline-flex text-white mb-5">
+            <p class="m-0 text-uppercase"><a class="text-white" href="/">Home</a></p>
+            <i class="fa fa-angle-double-right pt-1 px-3"></i>
+            <p class="m-0 text-uppercase"><a class="text-white" href="/instructors">Instructors</a></p>
+            <i class="fa fa-angle-double-right pt-1 px-3"></i>
+            <p class="m-0 text-uppercase">@instructor?.Name</p>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<!-- Instructor Detail Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="team-item">
+                    @if (!string.IsNullOrWhiteSpace(imageUrl))
+                    {
+                        <img class="img-fluid w-100" src="@imageUrl" alt="@instructor?.Name">
+                    }
+                    else
+                    {
+                        <img class="img-fluid w-100" src="/img/team-1.jpg" alt="@instructor?.Name">
+                    }
+                    <div class="bg-light text-center p-4">
+                        <h5 class="mb-3">@instructor?.Name</h5>
+                        <p class="mb-2">@instructor?.Designation</p>
+                        <div class="d-flex justify-content-center">
+                            @if (!string.IsNullOrWhiteSpace(instructor?.TwitterURL))
+                            {
+                                <a class="mx-1 p-1" href="@instructor.TwitterURL" target="_blank"><i class="fab fa-twitter"></i></a>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(instructor?.FacebookURL))
+                            {
+                                <a class="mx-1 p-1" href="@instructor.FacebookURL" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(instructor?.LinkedInURL))
+                            {
+                                <a class="mx-1 p-1" href="@instructor.LinkedInURL" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(instructor?.InstagramURL))
+                            {
+                                <a class="mx-1 p-1" href="@instructor.InstagramURL" target="_blank"><i class="fab fa-instagram"></i></a>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(instructor?.YoutubeURL))
+                            {
+                                <a class="mx-1 p-1" href="@instructor.YoutubeURL" target="_blank"><i class="fab fa-youtube"></i></a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="mb-5">
+                    <h2 class="mb-4">About @instructor?.Name</h2>
+                    <h5 class="text-primary mb-4">@instructor?.Designation</h5>
+                    @if (!string.IsNullOrWhiteSpace(instructor?.Bio))
+                    {
+                        <div class="mb-4">
+                            @Html.Raw(instructor.Bio)
+                        </div>
+                    }
+                    else
+                    {
+                        <p>No biography available.</p>
+                    }
+                </div>
+
+                <!-- Editable Area for Additional Content -->
+                <editable-area area-identifier="instructor-content" />
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Instructor Detail End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>

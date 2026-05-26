@@ -17,7 +17,11 @@ builder.Services.AddKentico(features =>
         ContentTypeNames = new[] {
            Edukate.Home.CONTENT_TYPE_NAME, 
            Edukate.About.CONTENT_TYPE_NAME,
-           Edukate.Course.CONTENT_TYPE_NAME
+           Edukate.Course.CONTENT_TYPE_NAME,
+           Edukate.CourseItem.CONTENT_TYPE_NAME,
+           Edukate.InstructorItem.CONTENT_TYPE_NAME
+
+
         }
     });
 

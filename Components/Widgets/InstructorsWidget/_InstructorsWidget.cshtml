@@ -1,0 +1,65 @@
+@using Edukate.Components.Widgets.InstructorsWidget
+
+@model InstructorsWidgetViewModel
+
+<!-- Team Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="section-title text-center position-relative mb-5">
+            <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">@Model.SectionTitle</h6>
+            <h1 class="display-4">@Model.SectionHeading</h1>
+        </div>
+
+        @if (Model.Instructors != null && Model.Instructors.Any())
+        {
+            <div class="owl-carousel team-carousel position-relative" style="padding: 0 30px;">
+                @foreach (var instructor in Model.Instructors)
+                {
+                    <div class="team-item">
+                        @if (!string.IsNullOrWhiteSpace(instructor.ImageUrl))
+                        {
+                            <img class="img-fluid w-100" src="@instructor.ImageUrl" alt="@instructor.Name">
+                        }
+                        else
+                        {
+                            <img class="img-fluid w-100" src="/img/team-1.jpg" alt="@instructor.Name">
+                        }
+                        <div class="bg-light text-center p-4">
+                            <h5 class="mb-3">@instructor.Name</h5>
+                            <p class="mb-2">@instructor.Designation</p>
+                            <div class="d-flex justify-content-center">
+                                @if (!string.IsNullOrWhiteSpace(instructor.TwitterURL))
+                                {
+                                    <a class="mx-1 p-1" href="@instructor.TwitterURL" target="_blank"><i class="fab fa-twitter"></i></a>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(instructor.FacebookURL))
+                                {
+                                    <a class="mx-1 p-1" href="@instructor.FacebookURL" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(instructor.LinkedInURL))
+                                {
+                                    <a class="mx-1 p-1" href="@instructor.LinkedInURL" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(instructor.InstagramURL))
+                                {
+                                    <a class="mx-1 p-1" href="@instructor.InstagramURL" target="_blank"><i class="fab fa-instagram"></i></a>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(instructor.YoutubeURL))
+                                {
+                                    <a class="mx-1 p-1" href="@instructor.YoutubeURL" target="_blank"><i class="fab fa-youtube"></i></a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="text-center">
+                <p class="text-muted">No instructors available at the moment.</p>
+            </div>
+        }
+    </div>
+</div>
+<!-- Team End -->

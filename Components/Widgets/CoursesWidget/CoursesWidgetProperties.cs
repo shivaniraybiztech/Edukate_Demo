@@ -1,6 +1,8 @@
+using CMS.ContentEngine;
 using Kentico.Forms.Web.Mvc;
 using Kentico.PageBuilder.Web.Mvc;
 using Kentico.Xperience.Admin.Base.FormAnnotations;
+using System.Collections.Generic;
 
 namespace Edukate.Components.Widgets.CoursesWidget
 {
@@ -17,5 +19,12 @@ namespace Edukate.Components.Widgets.CoursesWidget
 
         [CheckBoxComponent(Label = "Show Pagination", Order = 4)]
         public bool ShowPagination { get; set; } = true;
+
+        [ContentItemSelectorComponent(
+          Images.CONTENT_TYPE_NAME,
+          Label = "Feature Image",
+          MaximumItems = 20,
+          Order = 16)]
+        public IEnumerable<ContentItemReference> Image { get; set; }
     }
 }

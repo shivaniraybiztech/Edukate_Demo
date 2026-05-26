@@ -1,18 +1,16 @@
 using System.Collections.Generic;
 
-namespace Edukate.Components.Widgets.CoursesWidget
+namespace Edukate.PageTemplate.Courses
 {
-    public class CoursesWidgetViewModel
+    public class CoursesPageTemplateViewModel
     {
         public string SectionTitle { get; set; }
         public string SectionHeading { get; set; }
-        public List<CourseItemViewModel> Courses { get; set; } = new List<CourseItemViewModel>();
-        public bool ShowPagination { get; set; }
+        public List<CourseListItemViewModel> Courses { get; set; } = new List<CourseListItemViewModel>();
     }
 
-    public class CourseItemViewModel
+    public class CourseListItemViewModel
     {
-        public string Title { get; set; }
         public string CourseName { get; set; }
         public string Description { get; set; }
         public string Duration { get; set; }
