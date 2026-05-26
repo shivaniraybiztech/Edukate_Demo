@@ -1,0 +1,25 @@
+﻿@using Kentico.Content.Web.Mvc.PageBuilder
+@using Kentico.PageBuilder.Web.Mvc
+@using Kentico.Web.Mvc
+@addTagHelper *, Kentico.Content.Web.Mvc
+
+
+@model TemplateViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "About";
+}
+
+<!-- Hero Banner Editable Area -->
+<section>
+    <editable-area area-identifier="hero-area"></editable-area>
+</section>
+<!-- Latest News Section with Editable Area -->
+<section >
+    <editable-area area-identifier="about-main"></editable-area>
+</section>
+
+<section>
+    <editable-area area-identifier="why-area"></editable-area>
+</section>

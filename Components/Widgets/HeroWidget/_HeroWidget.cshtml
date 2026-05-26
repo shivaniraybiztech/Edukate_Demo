@@ -1,0 +1,135 @@
+﻿@using Edukate.Components.Widgets.HeroWidget
+
+@model HeroWidgetViewModel
+
+<section>
+    <!-- Header Start -->
+   @*  <div class="jumbotron jumbotron-fluid position-relative overlay-bottom mb-5">
+
+        @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+        {
+            <img src="@Model.ImageUrl"
+                 class="position-absolute w-100 h-100"
+                 style="object-fit: cover; top:0; left:0;"
+                 alt="Hero Image" />
+        }
+
+        <div class="container text-center my-5 py-5 position-relative">
+
+            <!-- Title -->
+            <h5 class="text-white mb-3">
+                @Model.Title
+            </h5>
+
+            <!-- Description -->
+            <h1 class="display-3 text-white mb-4">
+                @Model.MetaDescription
+            </h1>
+
+            <!-- Button -->
+            @if (!string.IsNullOrWhiteSpace(Model.ButtonText))
+            {
+                <a href="@Model.ButtonLink"
+                   class="btn btn-primary py-3 px-5">
+                    @Model.ButtonText
+                </a>
+            }
+
+        </div>
+    </div> *@
+
+
+    <!-- Hero Start -->
+    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom"
+         style="margin-bottom: 90px; min-height: 500px; overflow:hidden;">
+
+        <!-- Background Image -->
+        @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+        {
+            <img src="@Model.ImageUrl"
+                 class="position-absolute w-100 h-100"
+                 style="object-fit: cover; top:0; left:0; z-index:1;"
+                 alt="Hero Image" />
+        }
+
+        <!-- Overlay -->
+        <div class="position-absolute w-100 h-100"
+             style="top:0; left:0; background: rgba(0, 68, 204, 0.6); z-index:2;">
+        </div>
+
+        <!-- Content -->
+        <div class="container text-center py-5 position-relative"
+             style="z-index:3;">
+
+            <!-- Small Title -->
+            <h5 class="text-white text-uppercase mb-3">
+                @Model.Title
+            </h5>
+
+            <!-- Main Heading -->
+            <h1 class="display-3 text-white mb-4">
+                @Model.MetaDescription
+            </h1>
+
+            <!-- Search Box -->
+            <div class="mx-auto mb-5"
+                 style="width: 100%; max-width: 600px;">
+
+                <div class="input-group">
+
+                    <div class="input-group-prepend">
+
+                        <button class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle"
+                                type="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                            Courses
+                        </button>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Courses 1</a>
+                            <a class="dropdown-item" href="#">Courses 2</a>
+                            <a class="dropdown-item" href="#">Courses 3</a>
+                        </div>
+
+                    </div>
+
+                    <input type="text"
+                           class="form-control border-light"
+                           style="padding: 30px 25px;"
+                           placeholder="Keyword">
+
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary px-4 px-lg-5">
+                            Search
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Wave Shape Bottom -->
+        <div class="position-absolute w-100"
+             style="bottom: 0; z-index:3;">
+
+            <svg viewBox="0 0 500 150"
+                 preserveAspectRatio="none"
+                 style="height: 60px; width: 100%;">
+
+                <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98
+                    L500.00,150.00 L0.00,150.00 Z"
+                      style="stroke: none; fill: #ffffff;">
+                </path>
+
+            </svg>
+
+        </div>
+
+    </div>
+    <!-- Hero End -->
+
+</section>

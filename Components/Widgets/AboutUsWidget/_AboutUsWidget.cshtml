@@ -1,0 +1,144 @@
+﻿@using Edukate.Components.Widgets.AboutUsWidget
+
+@model AboutUsWidgetViewModel
+
+<section>
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row">
+
+                <!-- Left Image -->
+                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+
+                        @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                        {
+                            <img class="position-absolute w-100 h-100"
+                                 src="@Model.ImageUrl"
+                                 alt="@Model.Title"
+                                 style="object-fit: cover;">
+                        }
+
+                    </div>
+                </div>
+
+                <!-- Right Content -->
+                <div class="col-lg-7">
+
+                    <div class="section-title position-relative mb-4">
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">
+                            @Model.Title
+                        </h6>
+
+                        <h1 class="display-4">
+                            @Model.Subtitle
+                        </h1>
+                    </div>
+
+                    <p>
+                        @Model.Description
+                    </p>
+
+                    <!-- Counter Section -->
+                    <div class="row pt-3 mx-0">
+
+                        <!-- Counter 1 -->
+                        <div class="col-3 px-0">
+                            <div class="bg-success text-center p-4">
+
+                                <h1 class="text-white" data-toggle="counter-up">
+                                    @Model.Counter
+                                </h1>
+
+                                <h6 class="text-uppercase text-white">
+                                    Available
+                                    <span class="d-block">Subjects</span>
+                                </h6>
+
+                            </div>
+                        </div>
+
+                        <!-- Counter 2 -->
+                        <div class="col-3 px-0">
+                            <div class="bg-primary text-center p-4">
+
+                                <h1 class="text-white" data-toggle="counter-up">
+                                    @Model.CourseCount
+                                </h1>
+
+                                <h6 class="text-uppercase text-white">
+                                    Online
+                                    <span class="d-block">Courses</span>
+                                </h6>
+
+                            </div>
+                        </div>
+
+                        <!-- Counter 3 -->
+                        <div class="col-3 px-0">
+                            <div class="bg-secondary text-center p-4">
+
+                                <h1 class="text-white" data-toggle="counter-up">
+                                    @Model.InstructorCount
+                                </h1>
+
+                                <h6 class="text-uppercase text-white">
+                                    Skilled
+                                    <span class="d-block">Instructors</span>
+                                </h6>
+
+                            </div>
+                        </div>
+
+                        <!-- Counter 4 -->
+                        <div class="col-3 px-0">
+                            <div class="bg-warning text-center p-4">
+
+                                <h1 class="text-white" data-toggle="counter-up">
+                                    @Model.StudentCount
+                                </h1>
+
+                                <h6 class="text-uppercase text-white">
+                                    Happy
+                                    <span class="d-block">Students</span>
+                                </h6>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+</section>
+
+<script>
+    (function () {
+
+        var container = document.currentScript.closest("section");
+        if (!container) return;
+
+        var counters = container.querySelectorAll('[data-toggle="counter-up"]');
+
+        if (counters.length > 0 && typeof jQuery !== 'undefined' && jQuery.fn.counterUp) {
+
+            jQuery(counters).each(function () {
+                var $counter = jQuery(this);
+
+                if (!$counter.data('counterup-initialized')) {
+                    $counter.data('counterup-initialized', true);
+
+                    $counter.counterUp({
+                        delay: 10,
+                        time: 2000
+                    });
+                }
+            });
+        }
+
+    })();
+</script>
