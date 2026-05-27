@@ -2,6 +2,7 @@
 using Kentico.PageBuilder.Web.Mvc;
 using Kentico.Web.Mvc;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,9 +20,8 @@ builder.Services.AddKentico(features =>
            Edukate.About.CONTENT_TYPE_NAME,
            Edukate.Course.CONTENT_TYPE_NAME,
            Edukate.CourseItem.CONTENT_TYPE_NAME,
-           Edukate.InstructorItem.CONTENT_TYPE_NAME
-
-
+           Edukate.InstructorItem.CONTENT_TYPE_NAME,
+           Edukate.InstructorPage.CONTENT_TYPE_NAME
         }
     });
 
@@ -54,7 +54,9 @@ app.UseKentico();
 
 // app.UseAuthorization();
 
+// Redirect root path to /home
+app.MapGet("/", () => Results.Redirect("/home"));
+
 app.Kentico().MapRoutes();
-//app.MapGet("/ ");
 
 app.Run();

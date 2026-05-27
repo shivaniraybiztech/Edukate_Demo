@@ -18,41 +18,6 @@
 }
 
 <section>
-    <!-- Header Start -->
-   @*  <div class="jumbotron jumbotron-fluid position-relative overlay-bottom mb-5">
-
-        @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
-        {
-            <img src="@Model.ImageUrl"
-                 class="position-absolute w-100 h-100"
-                 style="object-fit: cover; top:0; left:0;"
-                 alt="Hero Image" />
-        }
-
-        <div class="container text-center my-5 py-5 position-relative">
-
-            <!-- Title -->
-            <h5 class="text-white mb-3">
-                @Model.Title
-            </h5>
-
-            <!-- Description -->
-            <h1 class="display-3 text-white mb-4">
-                @Model.MetaDescription
-            </h1>
-
-            <!-- Button -->
-            @if (!string.IsNullOrWhiteSpace(Model.ButtonText))
-            {
-                <a href="@Model.ButtonLink"
-                   class="btn btn-primary py-3 px-5">
-                    @Model.ButtonText
-                </a>
-            }
-
-        </div>
-    </div> *@
-
 
     <!-- Hero Start -->
     <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" 
@@ -119,9 +84,9 @@
                         </button>
 
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Courses 1</a>
-                            <a class="dropdown-item" href="#">Courses 2</a>
-                            <a class="dropdown-item" href="#">Courses 3</a>
+                            <a class="dropdown-item" href="/courses/course_1">Complete Web Development Bootcamp</a>
+                            <a class="dropdown-item" href="/courses/course_2">UI UX Design Fundamentals</a>
+                            <a class="dropdown-item" href="/courses/course_3">Digital Marketing Mastery</a>
                         </div>
 
                     </div>
