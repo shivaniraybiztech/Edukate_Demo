@@ -31,7 +31,9 @@
     ViewData["Title"] = instructor?.Name ?? "Instructor";
 }
 
-
+<section>
+    <editable-area area-identifier="hero-area"></editable-area>
+</section>
 @* <!-- Header Start -->
 <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 90px;">
     <div class="container text-center py-5">
@@ -53,6 +55,7 @@
         <div class="row">
             <div class="col-lg-4 mb-5 mb-lg-0">
                 <div class="team-item">
+                   <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="@instructor.SlugUrl">
                     @if (!string.IsNullOrWhiteSpace(imageUrl))
                     {
                         <img class="img-fluid w-100" src="@imageUrl" alt="@instructor?.Name">
@@ -87,7 +90,9 @@
                             }
                         </div>
                     </div>
+                    </a>
                 </div>
+               
             </div>
             <div class="col-lg-8">
                 <div class="mb-5">

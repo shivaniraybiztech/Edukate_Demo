@@ -1,0 +1,27 @@
+@using Kentico.Content.Web.Mvc.PageBuilder
+@using Kentico.PageBuilder.Web.Mvc
+@using Kentico.Web.Mvc
+@addTagHelper *, Kentico.Content.Web.Mvc
+
+
+@model TemplateViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Admission";
+}
+
+<!-- Hero Banner Editable Area -->
+<section>
+    <editable-area area-identifier="admission-hero-area"></editable-area>
+</section>
+
+<!-- Admission Form Section with Editable Area -->
+<section>
+    <editable-area area-identifier="admission-form-area"></editable-area>
+</section>
+
+<!-- Additional Content Section -->
+<section>
+    <editable-area area-identifier="admission-content-area"></editable-area>
+</section>

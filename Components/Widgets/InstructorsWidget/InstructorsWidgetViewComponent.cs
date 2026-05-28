@@ -64,7 +64,8 @@ namespace Edukate.Components.Widgets.InstructorsWidget
                     TwitterURL = item.TwitterURL,
                     LinkedInURL = item.LinkedInURL,
                     InstagramURL = item.InstagramURL,
-                    YoutubeURL = item.YoutubeURL
+                    YoutubeURL = item.YoutubeURL,
+                    SlugUrl = item.SlugUrl
                 };
             }).ToList();
 

@@ -1,7 +1,4 @@
-﻿
-
-
-using Edukate;
+﻿using Edukate;
 using Kentico.PageBuilder.Web.Mvc.PageTemplates;
 
 [assembly: RegisterPageTemplate(

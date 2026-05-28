@@ -21,5 +21,6 @@ namespace Edukate.Components.Widgets.InstructorsWidget
         public string LinkedInURL { get; set; }
         public string InstagramURL { get; set; }
         public string YoutubeURL { get; set; }
+        public string SlugUrl { get; set; }
     }
 }

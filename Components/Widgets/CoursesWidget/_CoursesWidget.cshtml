@@ -19,6 +19,7 @@
             @foreach (var course in Model.Courses)
             {
                 <div class="courses-item position-relative">
+
                     @if (!string.IsNullOrWhiteSpace(course.ImageUrl))
                     {
                         <img class="img-fluid" src="@course.ImageUrl" alt="@course.CourseName">
@@ -36,7 +37,14 @@
                             </div>
                         </div>
                         <div class="w-100 bg-white text-center p-4">
-                            <a class="btn btn-primary" href="@course.CourseUrl">Course Detail</a>
+                            @if (!string.IsNullOrWhiteSpace(course.CourseUrl))
+                            {
+                                <a class="btn btn-primary" href="@course.CourseUrl">Course Detail</a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-primary" href="#">Course Detail</a>
+                            }
                         </div>
                     </div>
                 </div>

@@ -51,11 +51,11 @@
             FacebookURL = item.FacebookURL,
             LinkedInURL = item.LinkedInURL,
             InstagramURL = item.InstagramURL,
-            YoutubeURL = item.YoutubeURL
+            YoutubeURL = item.YoutubeURL,
+            Url = item.SlugUrl
         };
     }).ToList();
 }
-<!-- Hero Banner Editable Area -->
 <section>
     <editable-area area-identifier="hero-area"></editable-area>
 </section>
@@ -70,9 +70,12 @@
         @if (instructors != null && instructors.Any())
         {
             <div class="owl-carousel team-carousel position-relative" style="padding: 0 30px;">
+
                 @foreach (var instructor in instructors)
                 {
                     <div class="team-item">
+                        <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="@instructor.Url">
+
                         @if (!string.IsNullOrWhiteSpace(instructor.ImageUrl))
                         {
                             <img class="img-fluid w-100" src="@instructor.ImageUrl" alt="@instructor.Name">
@@ -107,6 +110,7 @@
                                 }
                             </div>
                         </div>
+                        </a>
                     </div>
                 }
             </div>

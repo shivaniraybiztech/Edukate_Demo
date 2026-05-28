@@ -21,7 +21,10 @@ builder.Services.AddKentico(features =>
            Edukate.Course.CONTENT_TYPE_NAME,
            Edukate.CourseItem.CONTENT_TYPE_NAME,
            Edukate.InstructorItem.CONTENT_TYPE_NAME,
-           Edukate.InstructorPage.CONTENT_TYPE_NAME
+           Edukate.InstructorPage.CONTENT_TYPE_NAME,
+           Edukate.Admission.CONTENT_TYPE_NAME,
+
+
         }
     });
 

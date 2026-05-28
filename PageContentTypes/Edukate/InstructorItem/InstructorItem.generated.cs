@@ -87,5 +87,11 @@ namespace Edukate
 		/// YoutubeURL.
 		/// </summary>
 		public string YoutubeURL { get; set; }
+
+
+		/// <summary>
+		/// SlugUrl.
+		/// </summary>
+		public string SlugUrl { get; set; }
 	}
 }

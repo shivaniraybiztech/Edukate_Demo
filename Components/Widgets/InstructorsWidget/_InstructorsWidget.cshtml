@@ -16,6 +16,8 @@
                 @foreach (var instructor in Model.Instructors)
                 {
                     <div class="team-item">
+                        <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="@instructor.SlugUrl">
+
                         @if (!string.IsNullOrWhiteSpace(instructor.ImageUrl))
                         {
                             <img class="img-fluid w-100" src="@instructor.ImageUrl" alt="@instructor.Name">
@@ -50,6 +52,7 @@
                                 }
                             </div>
                         </div>
+                        </a>
                     </div>
                 }
             </div>
