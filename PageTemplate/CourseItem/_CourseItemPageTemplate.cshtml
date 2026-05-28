@@ -52,9 +52,9 @@
                             Course Detail
                         </h6>
 
-                        <h1 class="display-4">
-                            @course?.CourseTitle
-                        </h1>
+                        <h3 class="display-4">
+                            @course?.Title
+                        </h3>
                     </div>
 
                     <!-- Main Image -->
@@ -66,9 +66,9 @@
                     }
 
                     <!-- Course Description -->
-                    <p>
+                    <h3>
                         @Html.Raw(course?.CourseData)
-                    </p>
+                    </h3>
 
                 </div>
             </div>
@@ -85,13 +85,13 @@
 
                     <div class="d-flex justify-content-between border-bottom px-4">
                         <h6 class="text-white my-3">Instructor</h6>
-                        <h6 class="text-white my-3">John Doe</h6>
+                        <h6 class="text-white my-3">@course.Instructor</h6>
                     </div>
 
                     <div class="d-flex justify-content-between border-bottom px-4">
                         <h6 class="text-white my-3">Rating</h6>
                         <h6 class="text-white my-3">
-                            4.5 <small>(250)</small>
+                            4.5<small>(250)</small>
                         </h6>
                     </div>
 
@@ -102,7 +102,7 @@
 
                     <div class="d-flex justify-content-between border-bottom px-4">
                         <h6 class="text-white my-3">Duration</h6>
-                        <h6 class="text-white my-3">10.00 Hrs</h6>
+                        <h6 class="text-white my-3">@course.Duration<small>Hr</small></h6>
                     </div>
 
                     <div class="d-flex justify-content-between border-bottom px-4">
@@ -120,7 +120,7 @@
                     </h5>
 
                     <div class="py-3 px-4">
-                        <a class="btn btn-block btn-secondary py-3 px-5" href="#">
+                        <a class="btn btn-block btn-secondary py-3 px-5" href="/admission-form">
                             Enroll Now
                         </a>
                     </div>

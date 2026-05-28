@@ -7,125 +7,137 @@
 
 @{
     var currentPath = Context.Request.Path.Value?.Trim('/') ?? "";
-    var pathSegments = string.IsNullOrEmpty(currentPath) 
-        ? new string[0] 
+
+    var pathSegments = string.IsNullOrEmpty(currentPath)
+        ? new string[0]
         : currentPath.Split('/', StringSplitOptions.RemoveEmptyEntries);
 
-    // Get the last segment as the page name
-    var pageName = pathSegments.Length > 0 
-        ? System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pathSegments[^1].Replace("-", " "))
+    var pageName = pathSegments.Length > 0
+        ? System.Globalization.CultureInfo.CurrentCulture.TextInfo
+            .ToTitleCase(pathSegments[^1].Replace("-", " "))
         : "Home";
 }
 
 <section>
 
-    <!-- Hero Start -->
-    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" 
-   style="
-        margin-bottom: 90px;
-        min-height: 500px;
-        background:
-        linear-gradient(rgba(40,120,235,0.7), rgba(40,120,235,0.7)),
-        url('@Model.ImageUrl') center center / cover no-repeat;">
+    <div id="heroCarousel"
+         class="carousel slide carousel-fade"
+         data-ride="carousel">
 
-       @*  <!-- Background Image -->
-        @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
-        {
-            <img src="@Model.ImageUrl"
-                 class="position-absolute w-100 h-100"
-                 style="object-fit: cover; top:0; left:0; z-index:1;"
-                 alt="Hero Image" />
-        }
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
 
-        <div class="position-absolute w-100 h-100"
-             style="top:0; left:0; background: rgba(0, 68, 204, 0.6); z-index:2;">
-        </div> *@
+            @for (int i = 0; i < Model.Slides.Count; i++)
+            {
+                <li data-target="#heroCarousel"
+                    data-slide-to="@i"
+                    class="@(i == 0 ? "active" : "")">
+                </li>
+            }
 
-        <!-- Content -->
-        <div class="container text-center py-5 position-relative" style="z-index:3;">
+        </ol>
 
-            <!-- Breadcrumb -->
-            <div class="d-inline-flex text-white mb-5">
-                <p class="m-0 text-uppercase">
-                    <a class="text-white" href="/">Home</a>
-                </p>
+        <!-- Slides -->
+        <div class="carousel-inner">
 
-                @if (pathSegments.Length > 0)
-                {
-                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
-                    <p class="m-0 text-uppercase">@pageName</p>
-                }
-            </div>
+            @for (int i = 0; i < Model.Slides.Count; i++)
+            {
+                var slide = Model.Slides[i];
 
-            <!-- Small Title -->
-            <h5 class="text-white text-uppercase mb-3">
-                @Model.Title
-            </h5>
+                <div class="carousel-item @(i == 0 ? "active" : "")">
 
-            <!-- Main Heading -->
-            <h1 class="display-3 text-white mb-4">
-                @Model.MetaDescription
-            </h1>
+                    <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom mb-0"
+                         style="
+                        min-height: 700px;
+                        background:
+                        linear-gradient(rgba(40,120,235,0.7), rgba(40,120,235,0.7)),
+                        url('@slide.ImageUrl') center center / cover no-repeat;">
 
-            <!-- Search Box -->
-            <div class="mx-auto mb-5"
-                 style="width: 100%; max-width: 600px;">
+                        <div class="container text-center py-5 position-relative"
+                             style="z-index:3;">
 
-                <div class="input-group">
+                           
 
-                    <div class="input-group-prepend">
+                            <!-- Content -->
+                            <div style="padding-top:100px;">
 
-                        <button class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle"
-                                type="button"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false">
-                            Courses
-                        </button>
+                                <!-- Small Title -->
+                                <h5 class="text-white text-uppercase mb-3">
+                                    @slide.Title
+                                </h5>
 
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/courses/course_1">Complete Web Development Bootcamp</a>
-                            <a class="dropdown-item" href="/courses/course_2">UI UX Design Fundamentals</a>
-                            <a class="dropdown-item" href="/courses/course_3">Digital Marketing Mastery</a>
+                                <!-- Main Heading -->
+                                <h1 class="display-3 text-white mb-4">
+                                    @slide.MetaDescription
+                                </h1>
+                                <!-- Breadcrumb -->
+                                <div class="d-inline-flex text-white mb-5">
+
+                                    <p class="m-0 text-uppercase">
+                                        <a class="text-white" href="/">Home</a>
+                                    </p>
+
+                                    @if (pathSegments.Length > 0)
+                                    {
+                                        <i class="fa fa-angle-double-right pt-1 px-3"></i>
+
+                                        <p class="m-0 text-uppercase">
+                                            @pageName
+                                        </p>
+                                    }
+
+                                </div>
+                                <!-- CTA Buttons -->
+                                <div class="mt-4">
+
+                                    <a href="@slide.ButtonLink"
+                                       class="btn btn-primary px-5 py-3 mr-3">
+
+                                        @slide.ButtonText
+
+                                    </a>
+
+                                    <a href="/admission-form"
+                                       class="btn btn-outline-light px-5 py-3">
+
+                                        Apply Now
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
                         </div>
 
                     </div>
 
-                    <input type="text"
-                           class="form-control border-light"
-                           style="padding: 30px 25px;"
-                           placeholder="Keyword">
-
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary px-4 px-lg-5">
-                            Search
-                        </button>
-                    </div>
-
                 </div>
-
-            </div>
+            }
 
         </div>
 
-      @*   <!-- Wave Shape Bottom -->
-        <div class="position-absolute w-100"
-             style="bottom: 0; z-index:3;">
+        <!-- Previous Button -->
+        <a class="carousel-control-prev"
+           href="#heroCarousel"
+           role="button"
+           data-slide="prev">
 
-            <svg viewBox="0 0 500 150"
-                 preserveAspectRatio="none"
-                 style="height: 60px; width: 100%;">
+            <span class="carousel-control-prev-icon"></span>
 
-                <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98
-                    L500.00,150.00 L0.00,150.00 Z"
-                      style="stroke: none; fill: #ffffff;">
-                </path>
+        </a>
 
-            </svg>
+        <!-- Next Button -->
+        <a class="carousel-control-next"
+           href="#heroCarousel"
+           role="button"
+           data-slide="next">
 
-        </div> *@
+            <span class="carousel-control-next-icon"></span>
+
+        </a>
 
     </div>
-    <!-- Hero End -->
 
 </section>
+

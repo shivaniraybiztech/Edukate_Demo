@@ -16,5 +16,8 @@ namespace Edukate.Components.Widgets.AdmissionFormWidget
 
         [TextInputComponent(Label = "Submit Button Text", Order = 4)]
         public string SubmitButtonText { get; set; } = "Submit Application";
+
+
+
     }
 }

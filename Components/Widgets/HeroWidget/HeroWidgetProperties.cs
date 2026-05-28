@@ -17,7 +17,7 @@ namespace Edukate.Components.Widgets.HeroWidget
 
 
         [TextInputComponent(Label = "Title", Order = 1)]
-    public string Title { get; set; }
+         public string Title { get; set; }
 
         [TextAreaComponent(Label = "MetaDescription", Order = 2)]
         public string MetaDescription { get; set; }
@@ -34,7 +34,23 @@ namespace Edukate.Components.Widgets.HeroWidget
             Label = "Hero Image",
             MaximumItems = 5)]
         public IEnumerable<ContentItemReference> Image { get; set; }
+        [TextInputComponent(Label = "Slide 2 Title", Order = 6)]
+        public string Slide2Title { get; set; }
 
+        [TextAreaComponent(Label = "Slide 2 Description", Order = 7)]
+        public string Slide2MetaDescription { get; set; }
+
+        [TextInputComponent(Label = "Slide 2 Button Text", Order = 8)]
+        public string Slide2ButtonText { get; set; }
+
+        [TextInputComponent(Label = "Slide 2 Button Link", Order = 9)]
+        public string Slide2ButtonLink { get; set; }
+
+        [ContentItemSelectorComponent(
+            Images.CONTENT_TYPE_NAME,
+            Label = "Slide 2 Image",
+            MaximumItems = 5)]
+        public IEnumerable<ContentItemReference> Slide2Image { get; set; }
     }
 
     }

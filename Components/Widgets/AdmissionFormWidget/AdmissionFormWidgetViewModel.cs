@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Edukate.Components.Widgets.AdmissionFormWidget
 {
     public class AdmissionFormWidgetViewModel
@@ -11,5 +13,9 @@ namespace Edukate.Components.Widgets.AdmissionFormWidget
         public string SubmitButtonText { get; set; }
 
         public bool IsSubmitted { get; set; }
+
+        public List<CourseItem> Courses { get; set; } = new List<CourseItem>();
     }
+
+
 }

@@ -46,7 +46,7 @@
                             <div class="form-row">
                                 <div class="col-md-12 form-group">
                                     <label for="courses">Course Selection <span class="text-danger">*</span></label>
-                                    <select class="form-control" id="courses" name="Courses" required>
+                                    @* <select class="form-control" id="courses" name="Courses" required>
                                         <option value="">Select a course...</option>
                                         <option value="Web Development">Web Development</option>
                                         <option value="Graphic Design">Graphic Design</option>
@@ -56,6 +56,18 @@
                                         <option value="UI/UX Design">UI/UX Design</option>
                                         <option value="Business Management">Business Management</option>
                                         <option value="English Language">English Language</option>
+                                    </select> *@
+                                    <select class="form-control" id="courses" name="Courses" required>
+
+                                        <option value="">Select a course...</option>
+
+                                        @foreach (var course in Model.Courses)
+                                        {
+                                            <option value="@course.CourseTitle">
+                                                @course.CourseTitle
+                                            </option>
+                                        }
+
                                     </select>
                                 </div>
                             </div>

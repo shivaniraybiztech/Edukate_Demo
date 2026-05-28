@@ -23,8 +23,6 @@ builder.Services.AddKentico(features =>
            Edukate.InstructorItem.CONTENT_TYPE_NAME,
            Edukate.InstructorPage.CONTENT_TYPE_NAME,
            Edukate.Admission.CONTENT_TYPE_NAME,
-
-
         }
     });
 
